@@ -9,6 +9,7 @@ class ActivityLogEntry {
     required this.kind,
     required this.sourceLabel,
     this.source = ActivitySource.system,
+    this.shipmentNumber,
   });
 
   final DateTime timestamp;
@@ -16,6 +17,7 @@ class ActivityLogEntry {
   final ActivityLogKind kind;
   final String sourceLabel;
   final ActivitySource source;
+  final String? shipmentNumber;
 
   bool get isAlert => kind == ActivityLogKind.alert;
 }

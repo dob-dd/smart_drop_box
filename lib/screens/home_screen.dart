@@ -7,7 +7,8 @@ import '../widgets/activity_feed.dart';
 import '../widgets/lock_status_card.dart';
 import '../widgets/section_header.dart';
 import '../widgets/sensor_cards.dart';
-import 'activity_log_screen.dart';
+import '../navigation/app_navigator.dart';
+import '../navigation/app_screens.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.service});
@@ -81,13 +82,13 @@ class _HomeScreenState extends State<HomeScreen> {
               SensorCardsRow(sensors: _sensors),
               const SizedBox(height: 28),
               SectionHeader(
-                title: 'DELIVERY LOG',
+                title: 'RECENT ACTIVITY',
                 trailing: TextButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (_) => ActivityLogScreen(entries: logs),
-                      ),
+                    AppNavigator.pushScreen(
+                      context,
+                      screenName: AppScreens.activityLog,
+                      arguments: logs,
                     );
                   },
                   child: const Text('View All'),

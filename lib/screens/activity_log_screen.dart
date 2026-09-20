@@ -13,7 +13,7 @@ class ActivityLogScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DELIVERY LOG'),
+        title: const Text('RECENT ACTIVITY'),
       ),
       body: Container(
         margin: const EdgeInsets.all(16),

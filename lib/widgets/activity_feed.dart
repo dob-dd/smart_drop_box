@@ -81,42 +81,31 @@ class _ActivityRow extends StatelessWidget {
                     color: AppColors.textPrimary,
                     height: 1.35,
                   ),
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                 ),
+                if (entry.shipmentNumber != null) ...[
+                  const SizedBox(height: 8),
+                  Text(
+                    'Shipment Number',
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          fontSize: 10,
+                          color: AppColors.textMuted,
+                        ),
+                  ),
+                  const SizedBox(height: 2),
+                  Text(
+                    entry.shipmentNumber!,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
+                      color: AppColors.accentBlue,
+                      letterSpacing: 0.3,
+                    ),
+                  ),
+                ],
               ],
             ),
           ),
-          const SizedBox(width: 8),
-          _SourceTag(label: entry.sourceLabel, isAlert: entry.isAlert),
         ],
-      ),
-    );
-  }
-}
-
-class _SourceTag extends StatelessWidget {
-  const _SourceTag({required this.label, required this.isAlert});
-
-  final String label;
-  final bool isAlert;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: BoxDecoration(
-        color: isAlert ? AppColors.alertTagBackground : AppColors.tagBackground,
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Text(
-        label,
-        style: TextStyle(
-          fontSize: 10,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 0.6,
-          color: isAlert ? AppColors.logRed : AppColors.textSecondary,
-        ),
       ),
     );
   }
